@@ -5,7 +5,6 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // IMPORTANT: we need raw body for signature verification.
 // We'll store rawBody then parse JSON.
@@ -93,16 +92,9 @@ app.post("/webhooks/salla", (req, res) => {
 // Debug: view saved stores (protect later)
 app.get("/debug/stores", (req, res) => {
   res.json(readStores());
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 SalesPilot server running on port ${PORT}`);
-  del "{"
-  del /f /q "{"
   const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 SalesPilot server running on port ${PORT}`);
+});
 });
