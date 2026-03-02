@@ -95,10 +95,14 @@ app.get("/debug/stores", (req, res) => {
   res.json(readStores());
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 SalesPilot server running on http://localhost:${PORT}`);
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 SalesPilot server running on port ${PORT}`);
-});
+  del "{"
+  del /f /q "{"
+  const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 SalesPilot server running on port ${PORT}`);
 });
