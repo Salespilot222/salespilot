@@ -46,6 +46,7 @@ app.post("/webhooks/salla", (req, res) => {
     // For now: accept requests and log them.
     let payloadText = req.rawBody?.toString("utf8") || "";
     let payload;
+    console.log("HEADERS:", req.headers);
 
     try {
         payload = JSON.parse(payloadText);
@@ -117,6 +118,112 @@ app.get("/debug/stores", (req, res) => {
 
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = "0.0.0.0";
+{
+  "event": "invoice.created",
+  "merchant": 939837259,
+  "created_at": "Tue Mar 03 2026 08:44:41 GMT+0300",
+  "data": {
+    "id": 980376154,
+    "invoice_number": 1,
+    "uuid": "1a346eb6-10ec-4870-8c31-af8cbfbb8ff2",
+    "order_id": 1034422129,
+    "invoice_reference_id": null,
+    "type": "Tax Invoice",
+    "slug": 1,
+    "date": "2026-03-03 08:44:41",
+    "qr_code": null,
+    "payment_method": "cod",
+    "sub_total": {
+      "amount": 565,
+      "currency": "SAR"
+    },
+    "shipping_cost": {
+      "amount": 0,
+      "taxable": true,
+      "currency": "SAR"
+    },
+    "cod_cost": {
+      "amount": 0,
+      "taxable": true,
+      "currency": "SAR"
+    },
+    "discount": {
+      "amount": 0,
+      "currency": "SAR"
+    },
+    "tax": {
+      "percent": 0,
+      "amount": {
+        "amount": 0,
+        "currency": "SAR"
+      }
+    },
+    "total": {
+      "amount": 565,
+      "currency": "SAR"
+    },
+    "order_options": {
+      "amount": 0,
+      "currency": "SAR"
+    },
+    "order_reference_id": 244406998,
+    "shipping_cost_discount": {
+      "amount": 0,
+      "currency": "SAR"
+    },
+    "items": [
+      {
+        "id": 1882911907,
+        "item_id": 2080768998,
+        "product_id": 614504385,
+        "name": "سويت شيرت Textured بني رمادي",
+        "sku": "",
+        "quantity": 1,
+        "type": "product",
+        "price": {
+          "amount": 565,
+          "currency": "SAR"
+        },
+        "discount": {
+          "amount": 0,
+          "currency": "SAR"
+        },
+        "tax": {
+          "percent": 0,
+          "amount": {
+            "amount": 0,
+            "currency": "SAR"
+          }
+        },
+        "total": {
+          "amount": 565,
+          "currency": "SAR"
+        },
+        "description": "خيار المقاس : Medium. خيار اللون : Neon Green. "
+      }
+    ],
+    "company": null,
+    "customer": {
+      "id": 500315340,
+      "first_name": "sa",
+      "last_name": "sa",
+      "mobile": 1017995240,
+      "mobile_code": "+20",
+      "email": "slahalwzan0@gmail.com",
+      "avatar": "https://cdn.assets.salla.network/prod/admin/cp/assets/images/avatar_male.png",
+      "gender": "male",
+      "birthday": null,
+      "country_code": "EG",
+      "currency": "SAR",
+      "updated_at": {
+        "date": "2026-03-03 08:41:34.000000",
+        "timezone_type": 3,
+        "timezone": "Asia/Riyadh"
+      },
+      "address": null
+    }
+  }
+}
 app.listen(PORT, HOST, () => {
     console.log(`🚀 SalesPilot server running on port ${PORT}`);
 });
