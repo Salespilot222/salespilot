@@ -57,7 +57,6 @@ app.post("/webhooks/salla", (req, res) => {
     // 2) Log event
     const eventName = payload?.event || payload?.type || "unknown_event";
     console.log("📩 Webhook received:", eventName);
-    // console.log(JSON.stringify(payload, null, 2));
 
     // 3) Handle authorize/install event (names differ by config)
     // We'll try to detect store_id & access_token from common shapes
@@ -98,11 +97,4 @@ const PORT = Number(process.env.PORT) || 3000;
 const HOST = "0.0.0.0";
 app.listen(PORT, HOST, () => {
     console.log(`🚀 SalesPilot server running on port ${PORT}`);
-    if (!sigHeader) {
-        return res.status(401).send("Missing signature");
-    }
-    app.post('/webhooks/salla', (req, res) => {
-        console.log('Webhook received:', req.body);
-
-        res.status(200).json({ ok: true });
-    });
+});
