@@ -98,4 +98,11 @@ const PORT = Number(process.env.PORT) || 3000;
 const HOST = "0.0.0.0";
 app.listen(PORT, HOST, () => {
     console.log(`🚀 SalesPilot server running on port ${PORT}`);
-});
+    if (!sigHeader) {
+        return res.status(401).send("Missing signature");
+    }
+    app.post('/webhooks/salla', (req, res) => {
+        console.log('Webhook received:', req.body);
+
+        res.status(200).json({ ok: true });
+    });
