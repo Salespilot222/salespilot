@@ -57,6 +57,28 @@ app.post("/webhooks/salla", (req, res) => {
     // 2) Log event
     const eventName = payload?.event || payload?.type || "unknown_event";
     console.log("📩 Webhook received:", eventName);
+    // ✅ Step 1: Print important fields for invoice.created (no signature, no DB)
+if (eventName === "invoice.created") {
+    const data = payload?.data || {};
+    const subTotal = data?.sub_total || {};
+
+    console.log("=== INVOICE.CREATED ===");
+    console.log("merchant:", payload?.merchant);
+    console.log("created_at:", payload?.created_at);
+
+    console.log("invoice_id:", data?.id);
+    console.log("invoice_number:", data?.invoice_number);
+    console.log("invoice_uuid:", data?.uuid);
+
+    console.log("order_id:", data?.order_id);
+    console.log("type:", data?.type);
+    console.log("date:", data?.date);
+
+    console.log("payment_method:", data?.payment_method);
+    console.log("sub_total:", subTotal?.amount, subTotal?.currency);
+
+    console.log("=======================");
+}
 
     // 3) Handle authorize/install event (names differ by config)
     // We'll try to detect store_id & access_token from common shapes
