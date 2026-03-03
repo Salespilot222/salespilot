@@ -92,9 +92,11 @@ app.post("/webhooks/salla", (req, res) => {
 // Debug: view saved stores (protect later)
 app.get("/debug/stores", (req, res) => {
   res.json(readStores());
-  const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, "0.0.0.0", () => {
+  const PORT = Number(process.env.PORT) || 3000;
+const HOST = "0.0.0.0";
+app.listen(PORT, HOST, () => {
   console.log(`🚀 SalesPilot server running on port ${PORT}`);
+});
+
 });
 });
